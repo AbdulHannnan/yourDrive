@@ -88,3 +88,17 @@ A Supabase project is required. Later modules will add:
   > it streams in.
 - `npm run build` passes (home ~88.5 kB first load); `npm run dev` serves 200
   with the Urdu shell and working toggle markup.
+
+### Module 3 — Hero section
+
+- `components/Hero.tsx`: bold bilingual headline, one-line subheadline, and two
+  big CTA buttons (min-height 56px) — primary "Register as a driver" and
+  outline "Notify me at launch", each with an icon. All text from the i18n
+  dictionary (`t.hero.*`).
+- CTAs are in-page anchor links to the shared IDs in `lib/anchors.ts`
+  (`driver-signup`, `rider-waitlist`). The form sections come in later modules
+  and must use these same IDs. Added `scroll-behavior: smooth` in
+  `app/globals.css`.
+- Home page (`app/page.tsx`) now renders `<Hero />` (reverted to a server
+  component; the client bits live in Hero).
+- `npm run build` passes (home ~89.1 kB first load); `npm run dev` verified.

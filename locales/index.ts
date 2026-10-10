@@ -33,6 +33,12 @@ export interface Dictionary {
   brand: string;
   tagline: string;
   comingSoon: string;
+  hero: {
+    headline: string;
+    subheadline: string;
+    ctaDriver: string;
+    ctaRider: string;
+  };
   a11y: {
     selectLanguage: string;
   };
@@ -46,6 +52,12 @@ const ur: Dictionary = {
   brand: "yourDrive",
   tagline: "بنوں میں بائیک اور رکشہ کی سواری",
   comingSoon: "جلد آ رہا ہے",
+  hero: {
+    headline: "بنوں میں محفوظ اور آرام دہ سفر",
+    subheadline: "بائیک اور رکشہ، آپ کے موبائل سے — بہت جلد",
+    ctaDriver: "ڈرائیور کے طور پر رجسٹر ہوں",
+    ctaRider: "لانچ پر مجھے اطلاع دیں",
+  },
   a11y: {
     selectLanguage: "زبان منتخب کریں",
   },
@@ -59,6 +71,12 @@ const ps: Dictionary = {
   brand: "yourDrive",
   tagline: "په بنو کې د بايسکل او رکشا سفر",
   comingSoon: "ژر راځي",
+  hero: {
+    headline: "په بنو کې خوندي او آرام سفر",
+    subheadline: "بايسکل او رکشا، ستاسو له موبایل څخه — ډېر ژر",
+    ctaDriver: "د ډرايور په توګه راجستر شئ",
+    ctaRider: "د پیل پر مهال ما خبر کړئ",
+  },
   a11y: {
     selectLanguage: "ژبه وټاکئ",
   },
@@ -72,6 +90,12 @@ const en: Dictionary = {
   brand: "yourDrive",
   tagline: "Bike & rickshaw rides in Bannu",
   comingSoon: "Coming soon",
+  hero: {
+    headline: "Safe and smooth rides in Bannu",
+    subheadline: "Bikes and rickshaws, booked from your phone — launching soon",
+    ctaDriver: "Register as a driver",
+    ctaRider: "Notify me at launch",
+  },
   a11y: {
     selectLanguage: "Select language",
   },
