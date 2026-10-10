@@ -102,3 +102,22 @@ A Supabase project is required. Later modules will add:
 - Home page (`app/page.tsx`) now renders `<Hero />` (reverted to a server
   component; the client bits live in Hero).
 - `npm run build` passes (home ~89.1 kB first load); `npm run dev` verified.
+
+### Module 4 — Live driver counter
+
+- **Data seam** `lib/drivers.ts` → `getDriverCount()` + `DRIVER_GOAL` (100).
+  Returns the REAL count via a Supabase `count: "exact", head: true` query, and
+  returns **0 on any problem** (missing env, missing table, RLS block) so the
+  counter degrades gracefully. **Module 8 TODO:** point this at the real
+  `drivers` table; if RLS blocks public counts, expose a `SECURITY DEFINER`
+  Postgres function (RPC) that returns only the count and call it here.
+  > Privacy: this fetches only an aggregate COUNT, never driver rows.
+- **Server route** `app/api/driver-count/route.ts` (`force-dynamic`,
+  `no-store`) returns `{ count, goal }`. Counting stays server-side so the
+  public browser never needs read access to the `drivers` table.
+- **Component** `components/DriverCounter.tsx` (client): fetches the route,
+  shows `X / 100`, a bilingual label (`t.counter.label`), and a progress bar;
+  count-up animation (easeOutCubic, ~0.9s) that respects
+  `prefers-reduced-motion`. Rendered right under the hero in `app/page.tsx`.
+- Verified: API returns `{"count":0,"goal":100}` with no DB wired; counter
+  renders the 0 state cleanly. Build passes (home ~89.8 kB first load).

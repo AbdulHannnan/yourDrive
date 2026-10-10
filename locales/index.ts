@@ -39,6 +39,9 @@ export interface Dictionary {
     ctaDriver: string;
     ctaRider: string;
   };
+  counter: {
+    label: string;
+  };
   a11y: {
     selectLanguage: string;
   };
@@ -57,6 +60,9 @@ const ur: Dictionary = {
     subheadline: "بائیک اور رکشہ، آپ کے موبائل سے — بہت جلد",
     ctaDriver: "ڈرائیور کے طور پر رجسٹر ہوں",
     ctaRider: "لانچ پر مجھے اطلاع دیں",
+  },
+  counter: {
+    label: "ڈرائیور رجسٹرڈ ہو چکے",
   },
   a11y: {
     selectLanguage: "زبان منتخب کریں",
@@ -77,6 +83,9 @@ const ps: Dictionary = {
     ctaDriver: "د ډرايور په توګه راجستر شئ",
     ctaRider: "د پیل پر مهال ما خبر کړئ",
   },
+  counter: {
+    label: "ډرايوران راجستر شوي",
+  },
   a11y: {
     selectLanguage: "ژبه وټاکئ",
   },
@@ -95,6 +104,9 @@ const en: Dictionary = {
     subheadline: "Bikes and rickshaws, booked from your phone — launching soon",
     ctaDriver: "Register as a driver",
     ctaRider: "Notify me at launch",
+  },
+  counter: {
+    label: "drivers registered",
   },
   a11y: {
     selectLanguage: "Select language",
