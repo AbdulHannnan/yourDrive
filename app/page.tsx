@@ -1,20 +1,19 @@
+"use client";
+
+import { useI18n } from "@/lib/i18n";
+
+// Module 2 is just the shell + working language switching — no real content
+// sections yet. This placeholder confirms translations flow into the page body.
 export default function Home() {
+  const { t } = useI18n();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 py-16 text-center">
-      <h1 className="text-5xl font-bold tracking-tight text-emerald-700">
-        yourDrive
+    <main className="mx-auto flex max-w-screen-md flex-col items-center justify-center gap-4 px-4 py-20 text-center">
+      <h1 className="font-latin text-5xl font-bold tracking-tight text-emerald-700">
+        {t.brand}
       </h1>
-
-      {/* Urdu (default public language) */}
-      <p className="text-xl leading-relaxed">
-        بنوں میں بائیک اور رکشہ سواری — جلد آ رہا ہے
-      </p>
-
-      {/* English line for now; bilingual content & toggle come in later modules */}
-      <p className="text-sm text-gray-500">
-        Bike &amp; rickshaw rides for Bannu — coming soon. Placeholder page
-        (Module 1).
-      </p>
+      <p className="text-2xl">{t.tagline}</p>
+      <p className="text-lg text-gray-500">{t.comingSoon}</p>
     </main>
   );
 }

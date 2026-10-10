@@ -17,13 +17,26 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  /* System font stack for now. Urdu/Pashto Nastaliq web fonts are added in a
-     later module. */
+  /* Urdu/Pashto Nastaliq first, Naskh fallback for Pashto glyphs, then system. */
   font-family:
+    var(--font-nastaliq),
+    var(--font-naskh),
     system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    Arial,
     sans-serif;
+  /* Nastaliq is tall; give lines room to breathe. */
+  line-height: 1.9;
+}
+
+@layer utilities {
+  /* Latin brand name / English bits: use a clean sans, not the Arabic fonts. */
+  .font-latin {
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Arial,
+      sans-serif;
+    line-height: 1.3;
+  }
 }

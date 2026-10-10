@@ -63,3 +63,28 @@ A Supabase project is required. Later modules will add:
   in a later module.
 - Removed the default Geist local fonts (using a system font stack for now).
 - `npm run build` and `npm run dev` verified working.
+
+### Module 2 — Global shell + lightweight i18n
+
+- **Dictionary** at `locales/index.ts`: `ur`, `ps`, `en` keyed off a shared
+  `Dictionary` interface (TypeScript enforces all three stay in sync). `en` is
+  for the admin area and is **not** in the public toggle. Default is `ur`.
+  Helpers: `dirForLocale`, `publicLocales` (`ur`, `ps`), `localeNativeName`.
+- **i18n context/hook** at `lib/i18n.tsx`: `<I18nProvider>` + `useI18n()`
+  returning `{ locale, dir, t, setLocale }`. Persists the choice to
+  `localStorage` (`yourdrive.locale`, wrapped in try/catch) and keeps
+  `<html lang/dir>` in sync via effect. SSR starts at Urdu to match the layout.
+- **Shell components**: `components/Header.tsx` (brand + language toggle,
+  sticky), `components/Footer.tsx` (location + rights), and
+  `components/LanguageToggle.tsx` (Urdu/Pashto segmented control, 44px tap
+  targets, labelled in each script). No content sections yet.
+- **Fonts** (`app/layout.tsx`, via `next/font/google`): **Noto Nastaliq Urdu**
+  (primary) + **Noto Naskh Arabic** (fallback for Pashto-specific glyphs),
+  subset `arabic`, weights 400/700, `display: swap`. Self-hosted by Next and
+  preloaded. Brand/English text uses a `.font-latin` system-sans utility
+  (`app/globals.css`) so Latin characters don't fall through the Arabic fonts.
+  > Note: Nastaliq is a heavy script face even subset — the cost of correct
+  > Urdu/Pashto rendering. `display: swap` keeps text readable on slow 3G while
+  > it streams in.
+- `npm run build` passes (home ~88.5 kB first load); `npm run dev` serves 200
+  with the Urdu shell and working toggle markup.
